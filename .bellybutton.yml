@@ -1,0 +1,38 @@
+settings:
+  all_files: &all_files !settings
+    included:
+      - ~+/*
+    excluded:
+      - ~+/.tox/*
+    allow_ignore: yes
+
+  tests_only: &tests_only !settings
+    included:
+      - ~+/tests/*
+    excluded: 
+      - ~+/.tox/*
+    allow_ignore: yes
+
+  excluding_tests: &excluding_tests !settings
+    included:
+      - ~+/*
+    excluded:
+      - ~+/tests/*
+      - ~+/.tox/*
+    allow_ignore: yes
+
+default_settings: *excluding_tests
+
+rules:
+  ExampleRule:
+    description: "Empty module."
+    expr: /Module/body[not(./*)]
+    example: ""
+    instead: |
+      """This module has a docstring."""
+
+  DeprecatedFnCall:
+    description: `deprecated_fn` will be deprecated in v9.1.2.  Please use `new_fn` instad.
+    expr: //Call[func/Name/@id='deprecated_fn']
+    example: "deprecated_fn(*values)"
+    instead: "new_fn(values)"
