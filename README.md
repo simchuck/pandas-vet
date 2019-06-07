@@ -1,9 +1,14 @@
 # pandas-vet
 
 [![Build Status](https://travis-ci.org/deppen8/pandas-vet.svg?branch=master)](https://travis-ci.org/deppen8/pandas-vet)
-[![PyPI - Status](https://img.shields.io/pypi/status/pandas-vet.svg)](https://pypi.org/project/pandas-vet/)
-[![PyPI](https://img.shields.io/pypi/v/pandas-vet.svg)](https://pypi.org/project/pandas-vet/)
 [![PyPI - License](https://img.shields.io/pypi/l/pandas-vet.svg)](https://github.com/deppen8/pandas-vet/blob/master/LICENSE)
+
+[![PyPI](https://img.shields.io/pypi/v/pandas-vet.svg)](https://pypi.org/project/pandas-vet/)
+[![PyPI - Status](https://img.shields.io/pypi/status/pandas-vet.svg)](https://pypi.org/project/pandas-vet/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pandas-vet.svg)](https://pypi.org/project/pandas-vet/)
+
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/pandas-vet.svg)](https://anaconda.org/conda-forge/pandas-vet)
+[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pandas-vet.svg)](https://anaconda.org/conda-forge/pandas-vet)
 
 `pandas-vet` is a plugin for `flake8` that provides opinionated linting for `pandas` code.
 
@@ -25,6 +30,12 @@ The plugin is on PyPI and can be installed with:
 
 ```bash
 pip install pandas-vet
+```
+
+It can also be installed with `conda`:
+
+```bash
+conda install -c conda-forge pandas-vet
 ```
 
 `pandas-vet` is tested under Python 3.5 and 3.6 and should work with later versions as well.
@@ -93,6 +104,10 @@ flake8 pandas_vet setup.py tests --exclude tests/data
 - [Aly Sivji](https://twitter.com/CaiusSivjus)
 - Tim Smith
 
+### Other awesome contributors
+
+- Earl Clark
+
 ## List of warnings
 
 **PD001:** pandas should always be imported as 'import pandas as pd'
@@ -112,3 +127,13 @@ flake8 pandas_vet setup.py tests --exclude tests/data
 **PD008:** Use '.loc' instead of '.at'.  If speed is important, use numpy.
 
 **PD009:** Use '.iloc' instead of '.iat'.  If speed is important, use numpy.
+
+**PD010** '.pivot_table' is preferred to '.pivot' or '.unstack'; provides same functionality
+
+**PD011** Use '.array' or '.to_array()' instead of '.values'; 'values' is ambiguous
+
+**PDO12** '.read_csv' is preferred to '.read_table'; provides same functionality
+
+**PD013** '.melt' is preferred to '.stack'; provides same functionality
+
+**PD015** Use '.merge' method instead of 'pd.merge' function. They have equivalent functionality.
